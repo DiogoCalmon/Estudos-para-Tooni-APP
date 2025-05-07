@@ -3,3 +3,5 @@ interface ItemCarrinho {
     preco: string
     quantidade: number
 }
+
+export {ItemCarrinho}
