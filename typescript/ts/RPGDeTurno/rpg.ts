@@ -4,7 +4,7 @@ const prompt = promptSync();
 let classesEscolhidas: boolean = false
 let count: number = 1
 let jogadores = []
-let classes = /[xmz]/
+let classes = /[123]/
 
 while(!classesEscolhidas){
   console.log("-|----------------------------------------|-")
@@ -28,6 +28,14 @@ while(!classesEscolhidas){
   }
 
   count++
+}
+
+// console.log(jogadores.length)
+
+for (let i = 1; i <= jogadores.length; i++) {
+  for (let j = 0; j < i; j++) {
+    console.log(jogadores[i - 1])
+  }
 }
 
 
