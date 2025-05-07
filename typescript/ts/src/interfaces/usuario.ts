@@ -1,5 +1,5 @@
 interface Student {
-    [key:string] : string | number | number[],
+    [key:string] : string | number | number[] | undefined,
     name: string,
     GPA: number,
     classes?: number[]
