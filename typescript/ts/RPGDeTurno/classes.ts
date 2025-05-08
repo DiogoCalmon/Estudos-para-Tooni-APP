@@ -7,7 +7,7 @@ export class Cavalheiro extends Lutador implements MoveSet{
 
     constructor() {
         super()
-        this._atk = 4
+        this._atk = 7
         this._def = 12
         this._hp = 65
         this._mana = 20
@@ -26,9 +26,9 @@ export class Mago extends Lutador implements MoveSet{
 
     constructor() {
         super()
-        this._atk = 5
+        this._atk = 9
         this._def = 7
-        this._hp = 40
+        this._hp = 50
         this._mana = 40
         this.abilityOn = false
     }
@@ -45,7 +45,7 @@ export class Gladiador extends Lutador implements MoveSet{
 
     constructor() {
         super()
-        this._atk = 8
+        this._atk = 12
         this._def = 9
         this._hp = 50
         this._mana = 20

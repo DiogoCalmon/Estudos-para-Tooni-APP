@@ -4,6 +4,7 @@ export default class Lutador {
     protected _hp: number = 0
     protected _mana: number = 0
     protected _escudo: number = 0
+    protected _fadiga: number = 0
 
     
     public get hp() {
@@ -11,7 +12,10 @@ export default class Lutador {
     }
 
     public set hp(dano: number) {
-        this._hp -= dano 
+        if (dano <= 0){
+            return
+        }
+        this._hp -= dano
     }
 
     public get mana() {
@@ -21,7 +25,27 @@ export default class Lutador {
     public get escudo() {
         return this._escudo
     }
+
+    public set escudo(dano: number) {
+        if (this._escudo <= 0) {
+            return
+        }
+
+        if (dano > this._escudo){
+            this._escudo = 0
+        } else {
+            this._escudo -= dano
+        }
+        
+    }
     
+    public get fadiga() {
+        return this._fadiga
+    }
+
+    public set fadiga(recuperacao: number) {
+        this._fadiga -= recuperacao
+    }
 
     atacar(){
         if (this._mana <= 0){
@@ -35,19 +59,19 @@ export default class Lutador {
         }
 
         this._mana -= 6
-        let dano = (Math.random() * this._atk * critic)
-        let danoFinal = dano - this._escudo
-
-        if (danoFinal < 0){
-            this._escudo -= dano
-            return 0
+        if (this._mana < 0){
+            this._mana = 0
         }
+        let dano = Math.round(Math.floor(Math.random() * 10) / 10 * this._atk * critic)
+
+        console.log(`Seu dano inicial foi ${dano}`)
         return dano
     }
 
     defender(){
         if (this._escudo <= 25){
             this._escudo += Math.floor(Math.random() * (this._def - 5 + 1)) + 5;
+            this._fadiga += 1
             return 1
         } else {
             console.log("Escudo no máximo") 
