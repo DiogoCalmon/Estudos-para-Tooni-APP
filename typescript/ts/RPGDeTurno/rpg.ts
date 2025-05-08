@@ -47,4 +47,8 @@ for (let i = 0, l = jogadores.length; i < l; i++) {
   }
 }
 
+let teste: Cavalheiro = new Cavalheiro("Cavalheiro")
+
+
+
 
