@@ -1,25 +1,29 @@
 import promptSync from 'prompt-sync';
+import * as classe from './classes';
+import Lutador from './lutador';
 
 const prompt = promptSync();
 let classesEscolhidas: boolean = false
 let count: number = 0
-let jogadores = []
-let classes = /[123]/
+let classes: string[] = []
+let jogadores: (classe.Cavalheiro | classe.Mago | classe.Gladiador)[] = []
+let numeros = /[123]/
 
 while(!classesEscolhidas){
   console.log("-|----------------------------------------|-")
   console.log(" |                                        | ")
   console.log(` | Qual a classe do jogador ${count + 1}?            |`)
   console.log(" | 1. Cavalheiro, 2. Mago, 3. Gladiador   | ")
-  jogadores[count] = prompt(" | Faça sua escolha: ")
+  classes[count] = prompt(" | Faça sua escolha: ")
 
-  if (!classes.test(jogadores[count])) {
-                " | 1. Cavalheiro, 2. Mago, 3. Gladiador   | "
-    console.log(" | Escolha um valor válido                | ")
-    console.log("-|----------------------------------------|-")
-    process.exit();
-
+  if (typeof(classes[count]) === "string") {
+    if (!numeros.test(classes[count])) {
+      console.log(" | Escolha um valor válido                | ")
+      console.log("-|----------------------------------------|-")
+      process.exit();
+    }
   }
+
   console.log(" |                                        | ")
   console.log("-|----------------------------------------|-")
 
@@ -32,22 +36,79 @@ while(!classesEscolhidas){
 
 // Loop para mudar os elementos do array de jogadores para as suas respectivas classes
 
-for (let i = 0, l = jogadores.length; i < l; i++) {
+for (let i = 0, l = classes.length; i < l; i++) {
   for (let j = 0; j < 3; j++) {
-    if (j + 1 == parseInt(jogadores[i])){
+    if (j + 1 == parseInt(classes[i])){
       if (j + 1 == 1){
-        jogadores[i] = "Cavalheiro"
+        jogadores[i] = new classe.Cavalheiro()
       } else if (j + 1 == 2){
-        jogadores[i] = "Mago"
+        jogadores[i] = new classe.Mago()
       } else {
-        jogadores[i] = "Gladiador"
+        jogadores[i] = new classe.Gladiador()
       }
+      break
       //console.log(jogadores[i])
     }
   }
 }
 
-let teste: Cavalheiro = new Cavalheiro("Cavalheiro")
+// Instanciando objetos baseado na escolha dos jogadores
+const jogador1 = jogadores[0]
+const jogador2 = jogadores[1]
+
+
+//Aqui começará o jogo
+console.log("")
+console.log("")
+console.log(`Jogador 1: ${jogador1.tipo} vs Jogador 2: ${jogador2.tipo}`)
+console.log("      ---> Lutem <---      ")
+console.log("")
+
+let turno: 0 | 1 = Math.round(Math.random()) as 0 | 1
+
+while (jogador1.hp > 0 || jogador2.hp > 0) {
+  if (turno == 0) {
+    console.log("")
+    console.log("-|----------------------------------------|-")
+    console.log(` |   Vez do Jogador 1 - ${jogador1.tipo}  | `)
+    console.log(` |          HP - ${jogador1.hp}           | `)
+    console.log(` |         Mana - ${jogador1.mana}        | `)
+    console.log(" |                                        | ")
+    console.log("-|----------------------------------------|-")
+    console.log(" |                                        | ")
+    console.log(" |         Qual será a sua jogada:        | ")
+    console.log(" |       1. Atacar       2. Defender      | ")
+    console.log(" |       3. Meditar      4. Especial      | ")
+    console.log(" |                                        | ")
+
+    let escolha: string = prompt(" | Escolha: ")
+    if (!/^[1234]$/.test(escolha)) {
+      console.log("-|----------------------------------------|-")
+      console.log("          Escolha um valor válido           ")
+      console.log("")
+      continue
+
+    } else {
+      if (escolha == "1"){
+        let dano = jogador1.atacar()
+        jogador2.hp = dano
+        console.log(`O jogador 2 recebeu ${dano} de dano e está com ${jogador2.escudo} de escudo`)
+
+      } else if (escolha == "2"){
+        jogador1.defender()
+        console.log(`O jogador 1 aumentou o seu escudo para ${jogador1.escudo}`)
+
+      } else if (escolha == "3"){
+        jogador1.meditar()
+        console.log(`O jogador 1 aumentou sua mana para ${jogador1.mana}`)
+
+      } else if (escolha == "4"){
+
+      }
+    }
+    turno = 1
+  }
+}
 
 
 

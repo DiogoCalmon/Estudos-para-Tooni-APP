@@ -1,31 +1,59 @@
-class Cavalheiro extends Lutador implements MoveSet{
-    constructor(tipo: string) {
-        super(tipo)
-        if (tipo == "Cavalheiro") {
-            this.atk = 5
-            this.hp = 65
-            this.mana = 20
-        } else if (tipo == "Mago") {
-            this.atk = 5
-            this.hp = 40
-            this.mana = 30
-        } else {
-            this.atk = 8
-            this.hp = 40
-            this.mana = 20
-        }
+import Lutador from "./lutador"
+import MoveSet from "./moveSet"
+
+export class Cavalheiro extends Lutador implements MoveSet{
+    abilityOn: boolean
+    tipo: string = "Cavalheiro"
+
+    constructor() {
+        super()
+        this._atk = 4
+        this._def = 12
+        this._hp = 65
+        this._mana = 20
+        this.abilityOn = false
     }
 
-    atacar(){
-        const damage = Math.random()
-    }
-    defender(){
-        console.log("atacar")
-    }
-    meditar(){
-        console.log("atacar")
-    }
     usarHabilidade(){
-        console.log("atacar")
+        this._hp -= this.hp * 0.8
+        this._atk += 20
+    }
+}
+
+export class Mago extends Lutador implements MoveSet{
+    abilityOn: boolean
+    tipo: string = "Mago"
+
+    constructor() {
+        super()
+        this._atk = 5
+        this._def = 7
+        this._hp = 40
+        this._mana = 40
+        this.abilityOn = false
+    }
+
+    usarHabilidade(){
+        this._hp -= this.hp * 0.8
+        this._atk += 20
+    }
+}
+
+export class Gladiador extends Lutador implements MoveSet{
+    abilityOn: boolean
+    tipo: string = "Gladiador"
+
+    constructor() {
+        super()
+        this._atk = 8
+        this._def = 9
+        this._hp = 50
+        this._mana = 20
+        this.abilityOn = false
+    }
+
+    usarHabilidade(){
+        this._hp -= this.hp * 0.8
+        this._atk += 20
     }
 }

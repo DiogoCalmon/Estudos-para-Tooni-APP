@@ -1,4 +1,4 @@
-interface MoveSet {
+export default interface MoveSet {
     atacar():void
     defender():void
     meditar():void
