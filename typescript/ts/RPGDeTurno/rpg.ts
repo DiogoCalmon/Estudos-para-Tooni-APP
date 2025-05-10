@@ -107,9 +107,9 @@ while (jogador1.hp > 0 && jogador2.hp > 0) {
       if (escolha == "1"){
         let dano = jogador1.atacar()
         jogador2.hp = dano - jogador2.escudo
-        jogador2.escudo = dano
-        
         console.log(`O jogador 2 recebeu ${dano - jogador2.escudo} de dano`)
+        
+        jogador2.escudo = dano
         console.log(`Hp: ${jogador2.hp}| Escudo: ${jogador2.escudo}`)
 
       } else if (escolha == "2"){
@@ -162,11 +162,9 @@ while (jogador1.hp > 0 && jogador2.hp > 0) {
       if (escolha == "1"){
         let dano = jogador2.atacar()
         jogador1.hp = dano - jogador1.escudo
-        jogador1.escudo = dano
-
-        
-
         console.log(`O jogador 1 recebeu ${dano - jogador1.escudo} de dano`)
+
+        jogador1.escudo = dano
         console.log(`Hp: ${jogador1.hp}| Escudo: ${jogador1.escudo}`)
 
       } else if (escolha == "2"){
