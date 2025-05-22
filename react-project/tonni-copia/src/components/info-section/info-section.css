@@ -1,0 +1,41 @@
+.textos{
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+}
+
+.balao{
+    padding-inline: 1rem;
+    padding-block: 0.2rem;
+    margin-bottom: 6vh;
+    background-color: #0a84ff1a;
+    color: rgb(10 132 255 / var(--tw-text-opacity, 1));
+    border-radius: 15px;
+    font-weight: 450;
+}
+
+.balao p{
+    font-size: 15px;
+}
+
+.apresentacao{
+    line-height: 1.25;
+    font-weight: bold;
+    font-size: 3.975rem;
+    margin-bottom: 4vh;
+    line-height: 1;
+}
+
+.text-gradient{
+    background: linear-gradient(135deg, #2276ca 0%, #3399ff 70%, #ffffff 145%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
+.detalhes p{
+    font-family: Inter,system-ui,sans-serif;
+    font-size: 21px;
+    color: rgb(153, 153, 153);
+}

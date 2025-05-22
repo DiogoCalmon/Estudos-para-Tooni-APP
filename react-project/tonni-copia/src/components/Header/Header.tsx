@@ -5,17 +5,20 @@ export default function header(){
     <>
       <header>
         <div className="logo">
-          <div className="tooni">Tonni</div>
-          <div className="app">App</div>
+          <div className="tooni">
+            <h2>Tooni</h2>
+          </div>
+          <div className="app">
+            <p>App</p>
+          </div>
         </div>
         <div className="links">
           <a href="">Recursos</a>
           <a href="">Comparativo</a>
           <a href="">Preços</a>
         </div>
-        <div className="botao">
-          <button type="button">Adquirir agora</button>
-        </div>
+        <button type="button">Adquirir agora</button>
+        
       </header>
     </>
     

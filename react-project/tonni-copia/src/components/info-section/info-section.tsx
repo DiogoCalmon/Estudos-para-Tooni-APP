@@ -1,0 +1,22 @@
+import "./info-section.css"
+export default function info(){
+    return(
+        <>
+            <div className="textos">
+                <div className="balao">
+                    <p>Revolucione suas vendas no WhatsappApp</p>
+                </div>
+                <div className="apresentacao">
+                    Seu WhatsApp é um Caos?<br />
+                    <span className="text-gradient">Você Está Perdendo Dinheiro</span><br />
+                     e Nem Percebe!
+                </div>
+                <div className="detalhes">
+                    <p>Transforme Conversas em Conversões com o Tooni App –<br />
+                    Seu Novo Treinador de Vendas em Tempo Real</p>
+                </div>
+            </div>
+            
+        </>
+    )
+}
