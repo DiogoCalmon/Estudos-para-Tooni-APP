@@ -1,8 +1,12 @@
 #root {
-  max-width: 1280px;
+  display: flex;
+  flex-direction: column;
+  /*max-width: 1280px;*/
+  
   margin: 0;
   padding: 2rem;
   text-align: center;
+  background-color: rgb(71, 71, 71);
 }
 
 .logo {
