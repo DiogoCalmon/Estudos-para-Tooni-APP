@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 .textos{
     display: flex;
     flex-direction: column;
