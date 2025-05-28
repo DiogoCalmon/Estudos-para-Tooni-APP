@@ -18,14 +18,10 @@ export default function info(){
                     Seu Novo Treinador de Vendas em Tempo Real</p>
                 </div>
                 <div className="flex space-x-4">
-                    <button 
-                    type="button" 
-                    className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-medium flex items-center gap-2 transition-colors">
+                    <button type="button" className="botao-comecar">
                         Começar Agora <FaArrowRight />
                     </button>
-                    <button 
-                    type="button"
-                    className="border border-blue-500 text-blue-500 hover:bg-blue-50 px-6 py-3 rounded-lg font-medium transition-colors">
+                    <button type="button" className="botao-saiba">
                         Saiba mais
                     </button>
                 </div>
