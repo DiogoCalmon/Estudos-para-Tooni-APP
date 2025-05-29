@@ -1,6 +1,14 @@
+import { useNavigate } from 'react-router-dom'
 import './Header.css'
 
 export default function header(){
+  const idDoBotao: string = 'butao-para-mudar-pagina'
+  const navigate = useNavigate()
+
+  function telaDePagamento(){
+    navigate("/payment")
+  }
+
   return (
     <>
       <header>
@@ -17,7 +25,7 @@ export default function header(){
           <a href="">Comparativo</a>
           <a href="">Preços</a>
         </div>
-        <button type="button">Adquirir agora</button>
+        <button id={idDoBotao} onClick={telaDePagamento} type="button">Adquirir Agora</button>
         
       </header>
     </>

@@ -4,21 +4,22 @@
   margin: 0;
   padding: 1.5rem;
   text-align: center;
-  background-color: rgb(19, 19, 19);
 }
 
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 0.5vh;
   margin-bottom: 12vh;
+  margin-inline: 1.20rem;
 }
 
 .logo{
   display: flex;
   justify-items: space-between;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.7rem;
 }
 
 .tooni{
@@ -27,20 +28,22 @@ header {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
+  font-size: 22px;
 }
 
 .app{
   color: rgb(126, 126, 126);
-  font-size: 14px;
+  font-size: 18px;
 }
 
 .links{
   display: flex;
-  gap: 2rem;
+  gap: 3rem;
 }
 
 .links a {
   font-weight: 500;
+  font-size: 1.25rem;
   color: #8a8a8a;
   text-decoration: inherit;
   transition: 0.125s ease-out;
@@ -50,13 +53,13 @@ header {
 }
 
 header button {
-  padding-block: 0.6rem;
-  padding-inline: 0.8rem;
+  padding-block: 0.9rem;
+  padding-inline: 1.6rem;
   border-radius: 12px;
   border: none;
   align-items: center;
-  background-color: rgb(26, 120, 228);
-  font-size: 14px;
+  background-color: rgb(39, 133, 241);
+  font-size: 1.1rem;
   transition: 0.125s all;
 }
 

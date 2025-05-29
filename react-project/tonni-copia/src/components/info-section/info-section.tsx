@@ -17,7 +17,7 @@ export default function info(){
                     <p>Transforme Conversas em Conversões com o Tooni App –<br />
                     Seu Novo Treinador de Vendas em Tempo Real</p>
                 </div>
-                <div className="flex space-x-4">
+                <div className="botoes">
                     <button type="button" className="botao-comecar">
                         Começar Agora <FaArrowRight />
                     </button>
