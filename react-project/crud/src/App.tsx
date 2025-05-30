@@ -1,20 +1,41 @@
-import { useState } from 'react'
 import './App.css'
+import Adicionar from "./components/adicionarMusica"
+import Lista from "./components/listaDeMusicas"
 
 export default function App() {
-  const [count, setCount] = useState(0)
+  type Musica = {
+    id: number
+    titulo: string
+    autor: string
+    estado: boolean
+  }
+
+  const musicas: Musica[] = [
+    {
+      id: 1,
+      titulo: "No Face",
+      autor: "Drake",
+      estado: false
+    },
+    {
+      id: 2,
+      titulo: "Like That",
+      autor: "Future",
+      estado: false
+    },
+    {
+      id: 3,
+      titulo: "Num id Change",
+      autor: "Yeat",
+      estado: false
+    },
+  ]
+  
 
   return (
     <>
-      <div className="bg-zinc-500 w-2xl">
-        <h2>Gerenciador de Tarefas</h2>
-        <div className="bg-zinc-900 flex flex-col items-center mb-6 p-6">
-          
-        </div>  
-        <div className="bg-zinc-700">
-          <nav className="teste">oi</nav>
-        </div>
-      </div>
+      <Adicionar />
+      <Lista lista={musicas}/>
     </>
   )
 }
