@@ -57,6 +57,7 @@ const SpotifySearchApp: React.FC = () => {
       });
 
       const data = await response.json();
+      console.log(data)
       setAccessToken(data.access_token);
       return data.access_token;
     } catch (err) {
@@ -87,6 +88,7 @@ const SpotifySearchApp: React.FC = () => {
       }
 
       const data = await response.json();
+      console.log(data)
       
       if (searchType === 'track') {
         setTracks(data.tracks.items);
