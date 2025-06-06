@@ -2,7 +2,7 @@ import { Ellipsis, PlayIcon } from 'lucide-react'
 import '../App.css'
 
 type Musica = {
-    id: number
+    id: string
     titulo: string
     autor: string
     estado: boolean
@@ -13,6 +13,7 @@ type Musicas = {
 }
 
 export default function listaDeMusicas(props: Musicas){
+  console.log(props)
     return (
         <div className="bg-zinc-700 p-3 mt-2">
           {

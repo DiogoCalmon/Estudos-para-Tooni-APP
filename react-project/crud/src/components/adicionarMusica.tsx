@@ -1,35 +1,8 @@
 import { useState } from 'react';
 import '../App.css'
 
-interface SpotifyTrack {
-  id: string;
-  name: string;
-  artists: Array<{ name: string }>;
-  album: {
-    name: string;
-    images: Array<{ url: string }>;
-  };
-  external_urls: {
-    spotify: string;
-  };
-  preview_url: string | null;
-}
-
-interface SpotifyArtist {
-  id: string;
-  name: string;
-  genres: string[];
-  followers: {
-    total: number;
-  };
-  images: Array<{ url: string }>;
-  external_urls: {
-    spotify: string;
-  };
-}
-
-type Props = {
-  adicionar: string
+interface Props {
+  adicionarMusica: (novaMusica: []) => void
 }
 
 let token: string = ''
@@ -54,7 +27,7 @@ export default function adicionarMusica(props: Props){
     return token 
   }
 
-  async function procurarMusica(): Promise<void>{
+  async function procurarMusica(){
     const token = await getAccessToken()
 
     try {
@@ -68,8 +41,8 @@ export default function adicionarMusica(props: Props){
         throw new Error('Erro na busca');
       }
   
-      const musica = dados.json();
-      return musica
+      const musica = await dados.json();
+      return musica.tracks.items
 
     } catch (error) {
       console.log(error)
@@ -77,10 +50,11 @@ export default function adicionarMusica(props: Props){
     }
   }
 
-  function handleSubmit(event: React.FormEvent | React.KeyboardEvent ){
+  async function handleSubmit(event: React.FormEvent | React.KeyboardEvent ){
     event.preventDefault()
-    const novaMusica = procurarMusica()
-    return novaMusica
+    const novaMusica = await procurarMusica()
+    props.adicionarMusica(novaMusica)
+    
   }
 
   return (
