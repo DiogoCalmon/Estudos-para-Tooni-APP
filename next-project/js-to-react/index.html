@@ -1,23 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+<html>
+  <body>
     <div id="app"></div>
-    <script type="text/javascript">
-        const app = document.getElementById("app")
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/jsx">
+      const app = document.getElementById('app');
 
-        const element = document.createElement("h1")
-        const h1 = `<h1>Teste<h1/>`
+      function Header({title}) {
+        return (
+          <p>{title}</p>
+        )
+      }
 
-        element.innerHTML = h1
+      function HomePage(){
+        const names = ['Ada Lovelace', 'Grace Hopper', 'Margaret Hamilton'];
+ 
+        return (
+          <div>
+            <Header title="Develop. Preview. Ship." />
+            <ul>
+              {names.map((name) => (
+                <li key={name}>{name}</li>
+              ))}
+            </ul>
+          </div>
+        );
+      }
 
-        app.appendChild(element)
-            
-        
+      const root = ReactDOM.createRoot(app);
+      root.render(
+        <HomePage />
+        ); 
     </script>
-</body>
+  </body>
 </html>
