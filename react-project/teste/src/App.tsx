@@ -34,6 +34,8 @@ export default function App() {
     setTasks(novaLista)
   }
 
+  console.log("olá")
+
   function deletarTarefa(idTarefa: number){
     setTasks(prevTasks =>
       prevTasks.map(task =>
