@@ -80,6 +80,36 @@ async function seedCustomers() {
   return insertedCustomers;
 }
 
+// async function seedRevenue() {
+//   console.log('Criando tabela revenue...');
+//   await sql`
+//     CREATE TABLE IF NOT EXISTS revenue (
+//       month VARCHAR(4) NOT NULL UNIQUE,
+//       revenue INT NOT NULL
+//     );
+//   `;
+//   console.log('Tabela revenue criada/verificada');
+
+//   console.log('Inserindo dados de revenue...');
+//   console.log('Revenue data:', revenue);
+
+//   const insertedRevenue = await Promise.all(
+//     revenue.map(
+//       (rev) => {
+//         console.log('Inserindo revenue:', rev);
+//         return sql`
+//           INSERT INTO revenue (month, revenue)
+//           VALUES (${rev.month}, ${rev.revenue})
+//           ON CONFLICT (month) DO NOTHING;
+//         `;
+//       }
+//     ),
+//   );
+
+//   console.log('Revenue inserido com sucesso');
+//   return insertedRevenue;
+// }
+
 async function seedRevenue() {
   await sql`
     CREATE TABLE IF NOT EXISTS revenue (
@@ -87,31 +117,51 @@ async function seedRevenue() {
       revenue INT NOT NULL
     );
   `;
-
-  const insertedRevenue = await Promise.all(
-    revenue.map(
-      (rev) => sql`
+  
+  for (const rev of revenue) {
+    try {
+      await sql`
         INSERT INTO revenue (month, revenue)
         VALUES (${rev.month}, ${rev.revenue})
         ON CONFLICT (month) DO NOTHING;
-      `,
-    ),
-  );
-
-  return insertedRevenue;
+      `;
+    } catch (error) {
+      console.error('Erro ao inserir revenue:', rev, error);
+    }
+  }
+  
+  return true;
 }
 
 export async function GET() {
   try {
-    const result = await sql.begin((sql) => [
-      seedUsers(),
-      seedCustomers(),
-      seedInvoices(),
-      seedRevenue(),
-    ]);
+    // const result = await sql.begin((sql) => [
+    //   seedUsers(),
+    //   seedCustomers(),
+    //   seedInvoices(),
+    //   seedRevenue(),
+    // ]);
 
-    return Response.json({ message: 'Database seeded successfully' });
+    // return Response.json({ message: 'Database seeded successfully' });
+
+    await seedUsers();
+    await seedCustomers();           
+    await seedInvoices();            
+    await seedRevenue();
+    
+    const response = Response.json({ 
+      message: 'Database seeded successfully',
+      status: 'success',
+      timestamp: new Date().toISOString()
+    });
+    
+    return response;
   } catch (error) {
-    return Response.json({ error }, { status: 500 });
+    // return Response.json({ error }, { status: 500 });
+    console.error('Seed error:', error);
+    return Response.json({ 
+      error: error || 'Unknown error',
+      status: 'error'
+    }, { status: 500 });
   }
 }
