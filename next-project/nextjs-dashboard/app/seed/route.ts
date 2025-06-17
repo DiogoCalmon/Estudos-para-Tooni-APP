@@ -76,7 +76,7 @@ async function seedCustomers() {
       `,
     ),
   );
-
+  console.log("🙂esses são os customers: " + insertedCustomers)
   return insertedCustomers;
 }
 
@@ -144,10 +144,19 @@ export async function GET() {
 
     // return Response.json({ message: 'Database seeded successfully' });
 
+    /*
     await seedUsers();
     await seedCustomers();           
     await seedInvoices();            
     await seedRevenue();
+    */
+
+    await Promise.all([
+      seedUsers(),
+      seedCustomers(),           
+      seedInvoices(),            
+      seedRevenue()
+    ])
     
     const response = Response.json({ 
       message: 'Database seeded successfully',
