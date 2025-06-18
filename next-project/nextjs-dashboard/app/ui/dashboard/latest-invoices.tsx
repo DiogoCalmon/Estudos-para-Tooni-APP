@@ -8,9 +8,6 @@ export default async function LatestInvoices({
 }: {
   latestInvoices: LatestInvoice[];
 }) {
-  // for (let i = 0; i < latestInvoices.length; i++){
-  //   console.log("👉👈", JSON.stringify(latestInvoices[i], null, 2));
-  // }
   return (
     <div className="flex w-full flex-col md:col-span-4">
       <h2 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
