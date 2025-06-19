@@ -39,6 +39,10 @@ export async function fetchLatestInvoices() {
       ORDER BY invoices.date DESC
       LIMIT 5`;
 
+      console.log('Fetching revenue data...');
+      await new Promise((resolve) => setTimeout(resolve, 6000));
+      console.log('Data fetch completed after 3 seconds.');
+
       // for (let i = 0; i < data.length; i++){
       //   console.log("🥺 ", JSON.stringify(data[i], null, 2));
       // }
@@ -71,6 +75,10 @@ export async function fetchCardData() {
       customerCountPromise,
       invoiceStatusPromise,
     ]);
+
+    console.log('Fetching revenue data...');
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    console.log('Data fetch completed after 3 seconds.');
 
     const numberOfCustomers : number = Number(data[1][0].count ?? '0');
     const numberOfInvoices : number = Number(data[0][0].count ?? '0');    
